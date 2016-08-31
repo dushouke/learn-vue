@@ -1,0 +1,45 @@
+
+{
+  "stories": [
+    {
+      "id": 1,
+      "plot": "json-server",
+      "writer": "typicode1",
+      "upvotes": 99
+    },
+    {
+      "id": 2,
+      "plot": "json-server",
+      "writer": "typicode1",
+      "upvotes": 98
+    },
+    {
+      "id": 3,
+      "plot": "json-server",
+      "writer": "typicode3",
+      "upvotes": 100
+    },
+    {
+      "id": 4,
+      "plot": "json-server",
+      "writer": "typicode4",
+      "upvotes": 101
+    },
+    {
+      "id": 5,
+      "plot": "json-server",
+      "writer": "typicode2",
+      "upvotes": 105
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

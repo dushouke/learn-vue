@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Component</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div id="example">
+        <input v-model="parentMsg" />
+        <child :msg="parentMsg"></child>
+    </div>
+    <script>
+        Vue.component('child',{
+            props:['msg'],
+            template:'<div>my component: {{ msg }}</div>'
+        });
+		new Vue({
+            el:'#example',
+            data:{
+                parentMsg:''
+            }
+        });
+    </script>
+
+    <div id="event-example" @:child-msg="handleIt">
+        <p>Message:{{messages | json}}</p>
+        <event-child></event-child>
+    </div>
+    <template id="event-child">
+        <input type="text" v-model="msg">
+        <button @click="notify">Dispatch Event</button>
+    </template>
+    <script>
+        Vue.component('event-child',{
+           template:'#event-child',
+           data:function(){
+               return {msg:'hello'}
+           },
+           methods:{
+               notify:function(){
+                   if(this.msg.trim()) {
+                       this.$dispatch('child-msg',this.msg);
+                       //this.msg = '';
+                   }
+               }
+           }
+        });
+        
+        var parent = new Vue({
+           el:'#event-example',
+           data:{
+               messages:[]
+           },
+           methods:{
+             handleIt:function(msg){
+                  this.messages.push(msg);
+             }  
+           },
+           events:{
+            //    'child-msg':function(msg){
+            //        this.messages.push(msg);
+            //    }
+           }
+        });
+    </script>
+
+    
+
+</body>
+
+</html>
